@@ -13,13 +13,17 @@ function readLine (line) {
     var n = parseInt(line.toString().split(' ')[0], 10);
 
     function fibonacci(n) {
-      if (n === 0 || n === 1) return n;
+      if (n <= 1) return n;
       var arr = [0, 1];
 
       for (var i = 2; i < n; i++) {
-        arr.push(arr[i-2] + arr[i-1])
+        var newNum = arr[i-2] + arr[i-1];
+        console.log(newNum);
+        arr.push(newNum);
+        console.log(arr);
       }
-      return arr[n];
+      var fibN = arr[n-1] + arr[n-2];
+      return fibN;
     }
     var result = fibonacci(n);
     console.log(result);
