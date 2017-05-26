@@ -18,10 +18,9 @@ function readLine (line) {
 
       for (var i = 2; i < n; i++) {
         var newNum = arr[i-2] + arr[i-1];
-        var lastDigit = parseInt(newNum.toString().split('').pop());
-        arr.push(lastDigit);
+        arr.push(newNum % 10);
       }
-      var fibN = parseInt((arr[n-1] + arr[n-2]).toString().split('').pop());
+      var fibN = (arr[n-1] + arr[n-2]) % 10;
       return fibN;
     }
     var result = fibonacci(n);
