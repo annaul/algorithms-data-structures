@@ -15,16 +15,18 @@ function readLine (line) {
     function fibonacci(n) {
       if (n <= 1) return n;
       var arr = [0, 1];
+      var sum = 1;
 
       for (var i = 2; i < n; i++) {
         var newNum = arr[i-2] + arr[i-1];
         arr.push(newNum % 10);
+        sum += newNum % 10;
       }
-      var fibN = (arr[n-1] + arr[n-2]) % 10;
+      var fibN = ((arr[n-1] + arr[n-2]) + sum) % 10;
       return fibN;
     }
     var result = fibonacci(n);
-    console.log('result ',result);
+    console.log(result);
 
     process.exit();
   }
