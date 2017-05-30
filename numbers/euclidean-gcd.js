@@ -26,7 +26,7 @@ function readLine (line) {
     }
     var result = findGCD(a,b);
 
-    console.log('GCD =', result)
+    console.log(result)
 
     process.exit();
   }
