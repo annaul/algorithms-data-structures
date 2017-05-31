@@ -16,7 +16,20 @@ var items = [];
 var sortedItems = [];
 
 function solution(numItems, knapsackCapacity, items) {
-
+  sortArray(items);
+  var totalValue = 0;
+  for (var i = 0; i < sortedItems.length; i++) {
+    if (knapsackCapacity - sortedItems[i][1] >= 0) {
+      knapsackCapacity -= sortedItems[i][1];
+      totalValue += sortedItems[i][0];
+    } else if (knapsackCapacity - sortedItems[i][1] < 0) {
+      totalValue += (knapsackCapacity / sortedItems[i][1]) * sortedItems[i][0];
+      break;
+    } else {
+      break;
+    }
+  }
+  return totalValue.toFixed(4);
 }
 
 function sortArray(items) {
@@ -35,7 +48,6 @@ function sortArray(items) {
   return sortedItems;
 }
 
-sortArray(items);
 
 function readLine (line) {
   line = line.trim();
@@ -51,7 +63,7 @@ function readLine (line) {
   } else {
     items.push(parts)
     if (items.length == numItems) {
-      console.log(numItems, knapsackCapacity, sortArray(items));
+      console.log(solution(numItems, knapsackCapacity, items));
       process.exit();
     }
   }
