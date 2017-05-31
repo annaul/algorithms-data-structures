@@ -15,11 +15,11 @@ function readLine (line) {
     function change(m) {
       var i = 0;
 
-      while (m > 10) {
+      while (m >= 10) {
         m -= 10;
         i += 1;
       }
-      while (m > 5) {
+      while (m >= 5) {
         m -= 5;
         i += 1;
       }
