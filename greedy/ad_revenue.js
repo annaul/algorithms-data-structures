@@ -15,8 +15,8 @@ var clicksPerDay = [];
 
 function orderReverse (array) {
   array.sort(function(a, b) {
-  return b - a;
-});
+    return b - a;
+  })
 }
 
 function maxRevenue(numAds, profitPerClick, clicksPerDay) {
