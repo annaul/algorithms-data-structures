@@ -13,18 +13,34 @@ var numEl1 = 0;
 var orderedArr = [];
 var numEl2 = 0;
 var randomArr = [];
-var ind = 0;
-var indArr = [];
-var tempValue = 0;
-var tempArr = orderedArr;
+var indiciesArr = [];
+var ind = null;
 
-if (numEl1 !== numEl2 || orderedArr.length !== randomArr.length) return 'wrong input';
 
-function findIndex(tempArr, tempValue) {
-  if ()
-  ind = Math.ceil(tempArr.length/2);
+function iterate(arr1, num) {
+  let lower = arr1[0];
+  let upper = arr1.length - 1;
+
+  while (lower <= upper) {
+    ind = Math.floor((lower + upper) / 2);
+    if ( arr1[ind] < num) {
+      lower = ind + 1;
+    } else if (arr1[ind] > num) {
+      upper = ind - 1;
+    } else {
+      break;
+    }
+  }
+  return indiciesArr.push(ind);
 }
 
+function goThruRandomArr (orderedArr, randomArr) {
+  for (var i = 0; i < randomArr.length; i++) {
+    iterate(orderedArr, randomArr[i]);
+    console.log(i, '=========  ind ', ind);
+  }
+  return indiciesArr;
+}
 
 function readLine (line) {
   line = line.trim();
@@ -43,7 +59,8 @@ function readLine (line) {
 
     console.log('numEl1 ', numEl1, 'orderedArr ', orderedArr);
     console.log('numEl2 ', numEl2, 'randomArr ', randomArr);
-    console.log('indicies array ', findIndices(orderedArr, randomArr));
+    console.log('function ', goThruRandomArr (orderedArr, randomArr));
+    console.log('indicies array ', indiciesArr);
     process.exit();
   }
   lineNum++;
