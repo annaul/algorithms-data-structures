@@ -47,6 +47,7 @@ function readLine (line) {
   } else if (lineNum === 2){
     clicksPerDay = parts;
     console.log(maxRevenue(numAds, profitPerClick, clicksPerDay));
+    console.log([1,2].join(' '))
     process.exit();
   }
   lineNum++;
