@@ -16,10 +16,14 @@ var randomArr = [];
 var indiciesArr = [];
 var ind = null;
 
+if (numEl1 !== numEl2) return 'wrong input';
+if (numEl1 !== orderedArr.length) return 'wrong input';
+if (numEl2 !== randomArr.length) return 'wrong input';
 
 function iterate(arr1, num) {
-  let lower = arr1[0];
-  let upper = arr1.length - 1;
+  var lower = 0;
+  var upper = arr1.length - 1;
+
 
   while (lower <= upper) {
     ind = Math.floor((lower + upper) / 2);
@@ -28,18 +32,18 @@ function iterate(arr1, num) {
     } else if (arr1[ind] > num) {
       upper = ind - 1;
     } else {
-      break;
+      return indiciesArr.push(ind);
     }
   }
-  return indiciesArr.push(ind);
+
+  return indiciesArr.push(-1);
 }
 
 function goThruRandomArr (orderedArr, randomArr) {
   for (var i = 0; i < randomArr.length; i++) {
     iterate(orderedArr, randomArr[i]);
-    console.log(i, '=========  ind ', ind);
   }
-  return indiciesArr;
+  return indiciesArr = indiciesArr.join(' ');
 }
 
 function readLine (line) {
@@ -56,11 +60,7 @@ function readLine (line) {
   } else if (lineNum === 1){
     randomArr = parts;
     numEl2 = randomArr.shift();
-
-    console.log('numEl1 ', numEl1, 'orderedArr ', orderedArr);
-    console.log('numEl2 ', numEl2, 'randomArr ', randomArr);
-    console.log('function ', goThruRandomArr (orderedArr, randomArr));
-    console.log('indicies array ', indiciesArr);
+    console.log(goThruRandomArr (orderedArr, randomArr));
     process.exit();
   }
   lineNum++;
