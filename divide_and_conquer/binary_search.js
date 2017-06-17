@@ -52,7 +52,7 @@ function readLine (line) {
     return;
   }
 
-  var parts = line.toString().split(' ').map(function (x) { return parseInt(x, 10) });
+  var parts = line.toString().split(' ').filter((s)=>(s!=='')).map(function (x) { return parseInt(x, 10) });
 
   if (lineNum === 0) {
     orderedArr = parts;
