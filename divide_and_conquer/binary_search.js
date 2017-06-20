@@ -24,7 +24,6 @@ function iterate(arr1, num) {
   var lower = 0;
   var upper = arr1.length - 1;
 
-
   while (lower <= upper) {
     ind = Math.floor((lower + upper) / 2);
     if ( arr1[ind] < num) {
@@ -35,7 +34,6 @@ function iterate(arr1, num) {
       return indiciesArr.push(ind);
     }
   }
-
   return indiciesArr.push(-1);
 }
 
