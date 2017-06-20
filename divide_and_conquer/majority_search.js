@@ -26,7 +26,6 @@ function sortArr(numArr) {
 }
 
 function findMedian(numArr) {
-  var middle = numArr.length % 2;
   var medianInd = Math.ceil(numArr.length / 2);
   var medianInd2 = medianInd - 1;
   median = numArr[medianInd];
@@ -39,6 +38,7 @@ function findMajority(numArr) {
   findMedian(numArr);
   var counter = 0;
   var counter2 = 0;
+  // console.log('median ', median, 'median2 ', median2, 'numArr ', numArr);
 
   for (var i = 0; i < numArr.length; i++) {
     if (numArr[i] === median) {
@@ -47,7 +47,8 @@ function findMajority(numArr) {
       counter2 += 1;
     }
   }
-  if ((numArr.length / 2 + 1) > counter && (numArr.length / 2 + 1) > counter2) return 0;
+  // console.log('counter ', counter, 'counter2 ', counter2);
+  if ((Math.floor(numArr.length / 2) + 1) > counter && (Math.floor(numArr.length / 2) + 1) > counter2) return 0;
   else return 1;
 }
 
