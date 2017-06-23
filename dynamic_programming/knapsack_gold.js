@@ -13,16 +13,31 @@ var capacity = 0;
 var bars = 0;
 var matrix = [];
 
+function firstRow(capacity) {
+  matrix.push([]);
+  for (var i = 0; i < capacity+1; i++) {
+    matrix[0].push(0);
+  }
+}
+
 function fillMatrix(capacity, bars, weights) {
-  for (var i = 0; i <= bars; i++) {
+  firstRow(capacity);
+  for (var i = 1; i <= bars; i++) {
     for (var j = 0; j <= capacity; j++) {
-      if (i === 0) matrix[0].push(0);
-      if (j === 0) matrix[i].push(0);
+      if (j === 0) { matrix.push([0]); continue; }
+      var curBar = weights[i-1];
+      var above = matrix[i-1][j];
+      var back = matrix[i-1][j-curBar];
+      if (curBar > j) {matrix[i].push(above); continue;}
 
-      if (weights[i+1] > j) matrix[i+1].push(matrix[i][j]);
-
+      if (above > back + curBar) {
+        matrix[i].push(above)
+      } else {
+        matrix[i].push(back + curBar);
+      }
     }
   }
+  return matrix;
 }
 
 function readLine (line) {
@@ -39,7 +54,8 @@ function readLine (line) {
   } else if (lineNum === 1) {
     var weights = parts;
 
-    console.log('capacity ', capacity, 'bars ', bars, 'weights ', weights);
+    fillMatrix(capacity, bars, weights);
+    console.log(matrix[matrix.length - 1][matrix[matrix.length - 1].length - 1]);
 
     process.exit();
   }
