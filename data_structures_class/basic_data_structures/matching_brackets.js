@@ -14,29 +14,32 @@ var closeBrackets = ['}', ']', ')'];
 
 function findMisMatch(input) {
   var tempStack = [];
+  var stillOpen = [];
 
   for (var i = 0; i < input.length; i++) {
-    console.log('i ', i, 'input ', input, 'length ', input.length, 'tempStack ', tempStack);
+    // console.log('i ', i, 'stillOpen ', stillOpen, 'input ', input, 'length ', input.length, 'tempStack ', tempStack);
     var closeInp = closeBrackets.indexOf(input[i]);
     var openInp = openBrackets.indexOf(input[i]);
     var openStack = openBrackets.indexOf(tempStack[tempStack.length-1]);
-    console.log('closeInp ', closeInp, 'openInp ', openInp, 'openStack ', openStack);
+    // console.log('closeInp ', closeInp, 'openInp ', openInp, 'openStack ', openStack);
 
     if (openInp !== -1) {
       tempStack.push(input[i]);
-      console.log('push');
+      stillOpen.push(i+1);
+      // console.log('push');
     } else if (closeInp !== -1){
       if (openStack === closeInp && openStack !== -1 && closeInp !== -1) {
-        console.log('pop ', tempStack);
+        // console.log('pop ', tempStack);
+        stillOpen.pop();
         tempStack.pop();
       } else {
-        console.log('out on ', i);
+        // console.log('out on ', i);
         return i+1;
       }
     }
-
   }
-  if (tempStack.length === 0) return 'success';
+  if (stillOpen.length > 0) return stillOpen[0];
+  if (tempStack.length === 0) return 'Success';
 }
 
 
@@ -49,7 +52,7 @@ function readLine (line) {
   if (lineNum === 0) {
     var input = line.toString().split('').filter((s)=>(s!==''));
 
-    console.log('index ', findMisMatch(input));
+    console.log(findMisMatch(input));
 
     process.exit();
   }
