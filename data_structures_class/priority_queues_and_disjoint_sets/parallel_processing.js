@@ -8,10 +8,8 @@ var rl = readline.createInterface({
 
 rl.on('line', readLine);
 var lineNum = 0;
-var threads;
+var numThreads;
 var jobs;
-
-
 
 function readLine (line) {
   line = line.trim();
@@ -22,12 +20,12 @@ function readLine (line) {
   var parts = line.toString().split(' ').filter((s)=>(s!=='')).map(function (x) { return parseInt(x, 10) });
 
   if (lineNum === 0) {
-    threads = parts[0];
+    numThreads = parts[0];
     jobs = parts[1];
   } else if (lineNum === 1){
     var times = parts;
 
-    console.log(threads, jobs, times);
+    console.log(numThreads, jobs, times);
 
     process.exit();
   }
